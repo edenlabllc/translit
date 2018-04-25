@@ -84,14 +84,17 @@ defmodule Translit do
     |> join()
   end
 
-  # special case for "зг", that should be mapped as "zgh"
+  # special case for "Зг", that should be mapped as "zgh"
   defp translit_letter(letter, [last_letter] = acc) when letter in ~w(Г г) and last_letter in ~w(z Z) do
     acc ++ [translit_zgh(letter)]
   end
 
   # special case for "зг", that should be mapped as "zgh"
-  defp translit_letter(letter, [_ | last_letter] = acc) when letter in ~w(Г г) and last_letter in ~w(z Z) do
-    acc ++ [translit_zgh(letter)]
+  defp translit_letter(letter, acc) when letter in ~w(Г г) do
+    case List.last(acc) do
+      last_letter when last_letter in ~w(z Z) -> acc ++ [translit_zgh(letter)]
+      _ -> acc ++ [translit_letter(letter)]
+    end
   end
 
   defp translit_letter(letter, acc) do
@@ -114,5 +117,4 @@ defmodule Translit do
   defp translit_zgh("г"), do: "gh"
 
   defp join(letters_list) when is_list(letters_list), do: Enum.join(letters_list)
-  defp join(letters_list), do: letters_list
 end

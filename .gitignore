@@ -35,16 +35,3 @@ GitHub.sublime-settings
 .tags_sorted_by_file
 .vagrant
 .DS_Store
-
-# Ignore released binaries
-.deliver
-
-# Don't commit file uploads
-uploads/
-!uploads/.gitkeep
-
-# Don't ever commit this files to docker
-*.p12
-*id_rsa*
-*.key
-*.csr

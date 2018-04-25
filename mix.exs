@@ -7,10 +7,14 @@ defmodule Translit.MixProject do
     [
       app: :translit,
       description: "Cyrillic ukrainian to latin transliteration",
+      package: package(),
       version: @version,
       elixir: "~> 1.6",
+      build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test]
     ]
   end
 
@@ -21,15 +25,19 @@ defmodule Translit.MixProject do
   end
 
   defp deps do
-    []
+    [
+      {:excoveralls, "~> 0.8", only: :test}
+    ]
   end
 
   # Settings for publishing in Hex package manager:
   defp package do
-    [contributors: ["edenlabllc"],
+    [
+      contributors: ["edenlabllc"],
       maintainers: ["edenlabllc"],
       licenses: ["LISENSE.md"],
       links: %{github: "https://github.com/edenlabllc/translit"},
-      files: ~w(lib LICENSE.md mix.exs README.md)]
+      files: ~w(lib LICENSE.md mix.exs README.md)
+    ]
   end
 end

@@ -1,3 +1,4 @@
+Розгон - Rozghon
 Згурський - Zghurskyi
 Алушта - Alushta
 Андрій - Andrii
@@ -46,6 +47,7 @@
 Онищенко - Onyshchenko
 Полтава - Poltava
 Петро - Petro
+Розгон - Rozghon
 Решетилівка - Reshetylivka
 Рибчинський - Rybchynskyi
 Суми - Sumy
