@@ -18,4 +18,4 @@ def deps do
   ]
 end
 ```
-Available in [Hex](https://hex.pm/translit).
+Available in [Hex](https://hex.pm/packages/translit).
